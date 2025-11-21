@@ -1,15 +1,23 @@
 // TasksPage Component Styles
 // TodoMVC-inspired styling
 
+:deep(.q-page) {
+  display: block;
+  padding-top: 40px;
+}
+
 .todoapp-container {
   width: 100%;
   max-width: 550px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 155px;
 }
 
 .todoapp-section {
   background: #fff;
   max-width: 550px;
-  margin: 130px auto 40px;
+  margin: 0 auto 40px;
   position: relative;
   box-shadow:
     0 2px 4px 0 rgba(0, 0, 0, 0.2),
@@ -18,7 +26,9 @@
 
 .todo-title {
   position: absolute;
-  top: -155px;
+  top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   font-size: 100px;
   font-weight: 200;
@@ -26,6 +36,7 @@
   color: rgba(230, 45, 45, 0.6);
   text-rendering: optimizeLegibility;
   margin: 0;
+  pointer-events: none;
 }
 
 .main-section {

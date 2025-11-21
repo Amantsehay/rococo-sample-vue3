@@ -1,8 +1,8 @@
 {
-  "name": "rococo-sample-vue3",
+  "name": "cold-snap-vue3",
   "version": "0.0.3",
-  "description": "A sample frontend application for a Rococo based backend",
-  "productName": "Rococo Sample App",
+  "description": "Cold Snap - A Vue3 web application",
+  "productName": "Cold Snap",
   "author": "asymness <asym1999@gmail.com>, Axel <axelpcxs3@gmail.com>",
   "type": "module",
   "private": true,
