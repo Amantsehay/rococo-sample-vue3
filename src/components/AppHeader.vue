@@ -11,7 +11,7 @@
         v-if="authStore.isAuthenticated"
       />
 
-      <q-toolbar-title> Rococo Sample </q-toolbar-title>
+      <q-toolbar-title> Cold Snap </q-toolbar-title>
 
       <div class="q-mr-md text-caption text-grey-5">v{{ version }}</div>
 
@@ -37,7 +37,6 @@
   </q-drawer>
 </template>
 
-
 <script setup>
 import { ref } from 'vue'
 import { useAuthStore } from 'stores/auth'
@@ -49,6 +48,16 @@ const linksList = [
     title: 'Dashboard',
     icon: 'code',
     link: '/dashboard',
+  },
+  {
+    title: 'Tasks',
+    icon: 'task',
+    link: '/tasks',
+  },
+  {
+    title: 'Profile',
+    icon: 'person',
+    link: '/profile',
   },
 ]
 

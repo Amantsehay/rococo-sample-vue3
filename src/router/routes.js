@@ -5,7 +5,17 @@ const routes = [
     children: [
       {
         path: 'dashboard',
-        component: () => import('pages/IndexPage.vue'),
+        component: () => import('pages/dashboard/IndexPage.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'tasks',
+        component: () => import('pages/tasks/TasksPage.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'profile',
+        component: () => import('pages/profile/ProfilePage.vue'),
         meta: { requiresAuth: true },
       },
     ],
@@ -17,27 +27,27 @@ const routes = [
     children: [
       {
         path: 'login',
-        component: () => import('pages/LoginPage.vue'),
+        component: () => import('pages/auth/LoginPage.vue'),
         meta: { requiresAuth: false },
       },
       {
         path: 'signup',
-        component: () => import('pages/SignupPage.vue'),
+        component: () => import('pages/auth/SignupPage.vue'),
         meta: { requiresAuth: false },
       },
       {
         path: 'forgot-password',
-        component: () => import('pages/ForgotPasswordPage.vue'),
+        component: () => import('pages/auth/ForgotPasswordPage.vue'),
         meta: { requiresAuth: false },
       },
       {
         path: '/set-password/:token/:uidb64',
-        component: () => import('pages/SetPasswordPage.vue'),
+        component: () => import('pages/auth/SetPasswordPage.vue'),
         meta: { requiresAuth: false },
       },
       {
         path: 'auth/callback',
-        component: () => import('pages/Auth/AuthCallback.vue'),
+        component: () => import('pages/auth/AuthCallback.vue'),
         meta: { requiresAuth: false },
       },
     ],

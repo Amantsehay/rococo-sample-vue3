@@ -1,0 +1,15 @@
+// Main Styles Entry Point
+// Import all styles in the correct order
+
+// Abstracts (variables, mixins - no CSS output)
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+
+// Base styles
+@import 'base/typography';
+
+// Components (if needed in the future)
+// @import 'components/AppHeader';
+
+// Pages
+@import 'pages/TasksPage';
