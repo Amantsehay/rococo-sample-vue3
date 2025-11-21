@@ -1,10 +1,11 @@
 <template>
-  <q-page class="flex flex-center bg-grey-1">
+  <q-page class="bg-grey-1">
     <div class="todoapp-container">
+      <h1 class="todo-title">todos</h1>
+
       <section class="todoapp-section">
         <!-- Header -->
         <header>
-          <h1 class="todo-title">todos</h1>
           <input
             v-model="newTaskTitle"
             type="text"
