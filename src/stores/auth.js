@@ -149,11 +149,11 @@ export const useAuthStore = defineStore('auth', {
      */
     async requestPasswordReset(email) {
       try {
-        const response = await axios.post('/auth/request_password_reset', { email })
+        const response = await axios.post('/auth/forgot_password', { email })
 
         if (response.data?.success) {
           Notify.create({
-            message: 'Password reset email sent!',
+            message: response.data?.message || 'Password reset email sent!',
             color: 'positive',
             position: 'top',
             timeout: 5000,
@@ -247,14 +247,39 @@ export const useAuthStore = defineStore('auth', {
     },
 
     /**
+     * Update user profile (name)
+     */
+    async updateProfile(payload) {
+      try {
+        const response = await axios.put('/person/me', payload)
+
+        if (response.data?.success) {
+          this.updateUser(response.data.person)
+          Notify.create({
+            message: response.data?.message || 'Profile updated successfully!',
+            color: 'positive',
+            position: 'top',
+            timeout: 3000,
+          })
+          return true
+        } else {
+          this.showErrorNotification(response.data?.message)
+          return false
+        }
+      } catch (error) {
+        return this.handleApiError(error, 'Failed to update profile')
+      }
+    },
+
+    /**
      * Login with OAuth provider
      */
     async loginWithOAuth(provider, payload) {
       try {
         return await handleOAuthRequest(
-          this, 
-          () => axios.post(`/auth/${provider}/exchange`, payload), 
-          this.router
+          this,
+          () => axios.post(`/auth/${provider}/exchange`, payload),
+          this.router,
         )
       } catch (error) {
         return this.handleApiError(error, 'OAuth login failed')
