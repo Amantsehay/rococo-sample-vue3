@@ -2,7 +2,7 @@
   <q-page class="flex row flex-center">
     <q-card class="col-11 col-sm-8 col-md-6 col-lg-4 col-xl-3 q-pa-xs q-pa-md-sm q-mb-xl">
       <q-card-section>
-        <div class="text-h6 text-center">Welcome to Rococo Sample</div>
+        <div class="text-h6 text-center">Welcome to Cold Snap</div>
       </q-card-section>
 
       <q-card-section>
@@ -78,7 +78,7 @@
     </q-card>
   </q-page>
 </template>
-  
+
 <script setup>
 import { ref, computed } from 'vue'
 import { useAuthStore } from '@/stores/auth'
@@ -93,11 +93,16 @@ const microsoftLoading = ref(false)
 
 // Check if OAuth providers are configured
 const hasGoogleProvider = computed(() => {
-  return import.meta.env.VITE_GOOGLE_CLIENT_ID && import.meta.env.VITE_GOOGLE_CLIENT_ID.trim() !== ''
+  return (
+    import.meta.env.VITE_GOOGLE_CLIENT_ID && import.meta.env.VITE_GOOGLE_CLIENT_ID.trim() !== ''
+  )
 })
 
 const hasMicrosoftProvider = computed(() => {
-  return import.meta.env.VITE_MICROSOFT_CLIENT_ID && import.meta.env.VITE_MICROSOFT_CLIENT_ID.trim() !== ''
+  return (
+    import.meta.env.VITE_MICROSOFT_CLIENT_ID &&
+    import.meta.env.VITE_MICROSOFT_CLIENT_ID.trim() !== ''
+  )
 })
 
 const hasOAuthProviders = computed(() => {
@@ -114,7 +119,7 @@ async function signInWithGoogle() {
   googleLoading.value = true
   errorMessage.value = ''
   try {
-    await AuthService.signIn("google", authStore.invitationToken)
+    await AuthService.signIn('google', authStore.invitationToken)
   } catch (error) {
     console.error('Google sign-in error:', error)
     errorMessage.value = 'Failed to sign in with Google. Please try again.'
@@ -127,7 +132,7 @@ async function signInWithMicrosoft() {
   microsoftLoading.value = true
   errorMessage.value = ''
   try {
-    await AuthService.signIn("microsoft", authStore.invitationToken)
+    await AuthService.signIn('microsoft', authStore.invitationToken)
   } catch (error) {
     console.error('Microsoft sign-in error:', error)
     errorMessage.value = 'Failed to sign in with Microsoft. Please try again.'
@@ -136,4 +141,3 @@ async function signInWithMicrosoft() {
   }
 }
 </script>
-  
